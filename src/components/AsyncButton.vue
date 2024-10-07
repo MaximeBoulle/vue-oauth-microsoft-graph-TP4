@@ -1,5 +1,5 @@
 <template>
-    <BaseButton :disabled="isDisabled" @click="handleClick">
+    <BaseButton :disabled="isDisabled" @click="handleClick" :style="{ backgroundColor: color }">
         <slot></slot>
     </BaseButton>
 </template>
@@ -20,6 +20,7 @@ export default {
             type: String,
             default: 'primary',
         },
+
     },
     data() {
         return {

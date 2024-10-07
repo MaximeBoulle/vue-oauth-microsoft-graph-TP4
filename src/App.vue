@@ -1,6 +1,6 @@
 <template>
-  <BaseLayout>
-    <HomePage/>
+  <BaseLayout @userChanged="setAccount">
+    <HomePage :user="account"/>
   </BaseLayout>
 </template>
 
@@ -15,8 +15,20 @@ export default {
   components: {
     HomePage,
     BaseLayout
-  }
+  },
+  data() {
+    return {
+      account: null
+    };
+  },
+  methods: {
+    setAccount(account){
+      this.account = account;
+      console.log(account);
+    }
+  },
 }
+
 </script>
 
 <style>

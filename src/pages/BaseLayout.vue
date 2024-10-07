@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <BaseHeader />
+        <BaseHeader @userChanged="setAccount" />
         <slot></slot>
         <BaseFooter />
     </v-app>
@@ -14,6 +14,17 @@ export default {
     components: {
         BaseHeader,
         BaseFooter
+    },
+    data() {
+        return {
+            account: null
+        };
+    }, 
+    methods: {
+        setAccount(account) {
+            this.account = account;
+            this.$emit('userChanged', account);
+        }
     }
 };
 </script>

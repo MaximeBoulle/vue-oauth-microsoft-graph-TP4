@@ -1,29 +1,22 @@
 <template>
-    <BaseButton @click="signInAndGetUser">        
+    <AsyncButton @click="signInAndGetUser">        
         <slot></slot>
-    </BaseButton>
+    </AsyncButton>
 </template>
 
 <script>
-import BaseButton from '@/components/BaseButton.vue';
 import {signInAndGetUser} from '../lib/microsoftGraph';
+import AsyncButton from '@/components/AsyncButton.vue';
 export default {
     name: 'SignInButton',
     components: {
-        BaseButton
+        AsyncButton
     },
     methods: {
         async signInAndGetUser() {
             const account = await signInAndGetUser();
-            this.account = account;
-            console.log(account);
+            this.$emit('connected', account);
         }
     },
-    data() {
-        return {
-            account : null
-        };
-    },
-
 }
 </script>
