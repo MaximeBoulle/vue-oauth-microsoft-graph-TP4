@@ -50,12 +50,13 @@
 
 import BaseButton from '@/components/BaseButton.vue';
 import AsyncButton from '@/components/AsyncButton.vue';
+import { mapState } from 'vuex';
 
 
 export default {
     name: 'HomePage',
-    props: {
-        user: Object
+    computed: {
+        ...mapState(['user'])
     },
     components: {
         BaseButton,

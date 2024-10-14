@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
+import { createStore } from 'vuex'
 import App from './App.vue'
+
 
 // Vuetify
 import 'vuetify/styles'
@@ -12,4 +14,20 @@ const vuetify = createVuetify({
   directives,
 })
 
-createApp(App).use(vuetify).mount('#app')
+const store = createStore({
+  state () {
+    return {
+      user: null
+    }
+  },
+  mutations: {
+    setUser(state, user) {
+      state.user = user;
+    }
+  }
+})
+
+createApp(App).use(vuetify).use(store).mount('#app')
+
+
+

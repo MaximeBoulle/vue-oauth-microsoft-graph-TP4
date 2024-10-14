@@ -7,15 +7,18 @@
 <script>
 import {signInAndGetUser} from '../lib/microsoftGraph';
 import AsyncButton from '@/components/AsyncButton.vue';
+import { mapMutations } from 'vuex'; 
+
 export default {
     name: 'SignInButton',
     components: {
         AsyncButton
     },
     methods: {
+        ...mapMutations(['setUser']),
         async signInAndGetUser() {
             const account = await signInAndGetUser();
-            this.$emit('connected', account);
+            this.setUser(account);
         }
     },
 }
