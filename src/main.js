@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createStore } from 'vuex'
-import { createMemoryHistory, createRouter } from 'vue-router'
 import App from './App.vue'
 
 

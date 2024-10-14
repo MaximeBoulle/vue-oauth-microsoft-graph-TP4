@@ -1,31 +1,18 @@
 <template>
-  <BaseLayout @userChanged="setAccount">
-    <HomePage :user="account"/>
+  <BaseLayout>
+    <router-view/>
   </BaseLayout>
 </template>
 
 <script>
 
 import BaseLayout from './pages/BaseLayout.vue'
-import HomePage from './pages/HomePage.vue';
 
 
 export default {
   name: 'App',
   components: {
-    HomePage,
     BaseLayout
-  },
-  data() {
-    return {
-      account: null
-    };
-  },
-  methods: {
-    setAccount(account){
-      this.account = account;
-      console.log(account);
-    }
   },
 }
 
