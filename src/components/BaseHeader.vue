@@ -1,5 +1,23 @@
 <template>
-    <v-app-bar class="bar" :elevation="2">
+    <div class="bar" :elevation="2">
+        <ul class="nav">      
+            <li>
+                <router-link to="/">
+                    <BaseButton>
+                        Home
+                    </BaseButton>
+                </router-link>
+            </li>
+            <li>  
+                <router-link to="/conversations">
+                    <BaseButton>
+                        Conversation
+                    </BaseButton>
+                </router-link>
+            </li>
+
+        </ul>
+
         <SigninButton  color="#6fd472" class="signin" @connected="setAccount">
             <div v-if="account">
                 {{ account.name }}
@@ -8,15 +26,19 @@
                 Signin with Microsoft
             </div>  
         </SigninButton>
-    </v-app-bar>
+
+    </div>
 </template>
 
 <script>
 import SigninButton from '@/components/SigninButton.vue';
+import BaseButton from '@/components/BaseButton.vue';
+
 export default {
     name: 'BaseHeader',
     components: {
-        SigninButton
+        SigninButton,
+        BaseButton
     },
     data (){
         return {
@@ -34,5 +56,21 @@ export default {
 </script>
 
 <style scoped>
+
+    .bar{
+        display: flex;
+        justify-content: space-evenly;
+        box-shadow: 1px 1px 5px 1px #888888;
+        top : 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .nav{
+        display: flex;
+        gap: 10px;
+        list-style: none;
+    }
+
     
 </style>
